@@ -7,7 +7,8 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.shared import RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-
+from docx.enum.style import WD_STYLE_TYPE
+from docx.oxml.ns import qn
 
 class CItem(object):
 	def __init__(self, nid, qty, desc):
@@ -45,8 +46,40 @@ def create_docx_demo(filename):
 	document.add_paragraph('paragraph style=Title', style='Title')
 	 
 	document.add_paragraph('paragraph style=List Bullet', style='List Bullet')
-	document.add_paragraph('paragraph style=List Number', style='List Number')
+	document.add_paragraph('paragraph style=List Number\n', style='List Number')
 	document.add_paragraph('paragraph style=List Continue', style='List Continue')
+	document.add_paragraph('\n') #是本段里加了一个换行。
+	document.add_paragraph('')
+	document.save(filename)
+
+	p = document.add_paragraph("")
+	r = p.add_run("微软雅黑")
+	r.font.name = u'微软雅黑'
+	r.font.size = Pt(18)
+	r._element.rPr.rFonts.set(qn('w:eastAsia'), r.font.name)
+
+	r = p.add_run("楷体")
+	r.font.name = u'楷体'
+	r.font.size = Pt(16)
+	r._element.rPr.rFonts.set(qn('w:eastAsia'), r.font.name)
+
+	r = p.add_run("宋体")
+	r.font.name = u'宋体'
+	r.font.size = Pt(14)
+	r._element.rPr.rFonts.set(qn('w:eastAsia'), r.font.name)
+
+	r = p.add_run("黑体")
+	r.font.name = u'黑体'
+	r.font.size = Pt(12)
+	r._element.rPr.rFonts.set(qn('w:eastAsia'), r.font.name)
+
+	# 自定义style只能对英文起作用
+	styles = document.styles
+	s1 = styles.add_style('s1', WD_STYLE_TYPE.PARAGRAPH)
+	s1.font.size = Pt(12)
+	s1.font.name = "宋体" 
+	document.add_paragraph("我的style", style="s1")
+	document.add_paragraph("", style="s1")
 	 
 	# add picture, 不设置width，则显示为原图大小。 5英寸适合A4.返回对象 InlineShape
 	

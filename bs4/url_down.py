@@ -37,6 +37,7 @@ def down_url_datas(uri, prefix, postfix, startnumber, outpath):
 		num += 1
 
 
+#http://dash.edgesuite.net/akamai/bbb_30fps/bbb_30fps.mpd
 def test_down():
 	uri = "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_30fps_480x270_600k"
 	down_url_datas(uri, "bbb_30fps_480x270_600k_", ".m4v", 0, "D:\\work\\ijk_drm\\doc\\mpd\\akamai")

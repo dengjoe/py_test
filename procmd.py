@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+' 进程管理：启动/停止/是否运行(返回 0-停止，1-运行) '
+
 __author__ = 'Kevin deng'
 
 # import subprocess

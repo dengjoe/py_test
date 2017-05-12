@@ -30,14 +30,19 @@ def getpid(process):
     return -1
 
 def process_monitor(processname, cmd):
-    pid = getpid(os.path.basename(processname))
+    names = processname.split()
+    pid = getpid(os.path.basename(names[0]))
     ret = 0
 
     if cmd == "start":
         if pid==-1:
+            cmdpath = os.getcwd()
+            apppath = os.path.dirname(names[0])
             cmd = "nohup %s &" % processname
             print cmd
+            os.chdir(apppath)
             ret = os.system(cmd)
+            os.chdir(cmdpath)
         else:
             print "%s is already runing." % processname
     elif cmd == "stop":
@@ -58,7 +63,7 @@ def process_monitor(processname, cmd):
 
 if __name__=="__main__":
     if len(sys.argv) < 3:
-        print "Usage: %s process [start|stop|status]"  % sys.argv[0]
+        print "Usage: %s \"process params\" [start|stop|status]"  % sys.argv[0]
         sys.exit(2)
 
     ret = process_monitor(sys.argv[1], sys.argv[2])

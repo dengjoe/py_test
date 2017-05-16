@@ -13,8 +13,10 @@ __author__ = 'Kevin deng'
 def application(environ, start_response):
     method = environ['REQUEST_METHOD']
     path = environ['PATH_INFO']
-    print(method, path)
+    print("method:", method)
+    print("path:", path)
     # print(environ)
+    
     # 发送了HTTP响应的Header
     start_response('200 OK', [('Content-Type', 'text/html')]) 
 

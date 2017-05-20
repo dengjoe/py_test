@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-' a test of urllib '
+' a simple download *.m4s files of mpd use urllib '
 
 __author__ = 'Kevin deng'
 

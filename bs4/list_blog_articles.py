@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-' a test module to catch article list '
+' a test module to catch blogs article list '
 
 __author__ = 'Kevin deng'
 
 
 from bs4 import BeautifulSoup
+import urllib.request as urllib2
 
 from article_item import ArticleItem
-from url_html import get_html
+
+
+def download_html(url):
+	page = urllib2.urlopen(url)
+	html = page.read()
+	return html
 
 def get_articles_sina(bsobj, path, fout, fileout):
 	articles = []
@@ -58,7 +64,7 @@ def get_articles_ifeng(bsobj, path, fout, fileout):
 
 
 def catch_all_titles(path, url, fout, fileout):
-	html = get_html(url)
+	html = download_html(url)
 	bsobj = BeautifulSoup(html, "lxml")
 
 	if path.find("ifeng.com") > 0:

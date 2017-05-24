@@ -38,7 +38,7 @@ def process_monitor(processname, cmd):
         if pid==-1:
             cmdpath = os.getcwd()
             apppath = os.path.dirname(names[0])
-            cmd = "nohup %s &" % processname
+            cmd = "nohup %s > procmd.log 2>&1 &" % processname
             print cmd
             os.chdir(apppath)
             ret = os.system(cmd)

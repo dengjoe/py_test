@@ -1,7 +1,10 @@
 #! python3
 # -*- coding: utf-8 -*-
 
-' 下载hls的ts文件，测试下载速度并记录日志到当前目录 '
+''' 
+下载hls的ts文件，测试下载速度并记录日志到当前目录 
+其计时函数只能在windows下正常运行，linux下会计时不准确
+'''
 
 __author__ = 'Kevin deng'
 

@@ -1,0 +1,52 @@
+[
+  {
+    "program_id": 11,
+    "input": [
+      {
+        "begin_time": "2017-05-24 13:05:00",
+        "url": "/home/kevin/ab05.ts"
+      },
+      {
+        "begin_time": "2017-05-24 14:25:00",
+        "url": "/home/kevin/food_17M_cbr.ts"
+      }
+    ],
+    "task": [
+      {
+        "task_id": 1,
+        "cmd": "ffmpeg",
+        "cmd_optional": "-re",
+        "cmd_para": "-c:v copy -c:a copy -f mpegts",
+        "output_url": "tcp://192.168.3.103:22222",
+        "output_para": "?listen=1&send_buffer_size=940"
+      },
+      {
+        "task_id": 2,
+        "cmd": "ffmpeg",
+        "cmd_optional": "-re",
+        "cmd_para": "-c:v copy -c:a copy -f mpegts",
+        "output_url": "udp://192.168.3.101:44444",
+        "output_para": "?pkt_size=940&buffer_size=940"
+      }
+    ]
+  },
+  {
+    "program_id": 12,
+    "input": [
+      {
+        "begin_time": "2017-05-24 14:10:00",
+        "url": "/home/kevin/food_17M_cbr.ts"
+      }
+    ],
+    "task": [
+      {
+        "task_id": 3,
+        "cmd": "ffmpeg",
+        "cmd_optional": "-re",
+        "cmd_para": "-c:v copy -c:a copy -f mpegts",
+        "output_url": "udp://192.168.2.166:44402",
+        "output_para": "?pkt_size=940&buffer_size=940"
+      }
+    ]
+  }
+]

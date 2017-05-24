@@ -1,0 +1,23 @@
+{
+  "engine": {
+	"log_level": 4,
+    "ip": "192.168.2.166",
+    "port": 17818
+  },
+  "tunnel": [
+    {
+      "cmd": "ffmpeg",
+      "cmd_path": "/usr/local/bin/ffmpeg"
+    }
+  ],
+  "tentacl": [
+    {
+      "ip": "192.168.2.127",
+      "port": 5001
+    },
+    {
+      "ip": "192.168.2.127",
+      "port": 5002
+    }
+  ]
+}

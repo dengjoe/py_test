@@ -14,6 +14,7 @@ import json
 import time
 import os
 import sys
+import signal
 
 
 program_conf = "../conf/programs_local.json"
@@ -28,7 +29,7 @@ class PgInput(object):
 		self.url = dic["url"]
 
 	def __str__(self):
-		return "begin:%s url:%s" % (self.begin_time, self.url)
+		return "[%s] : %s" % (self.begin_time, self.url)
 
 class PgTask(object):
 	''' 节目的任务。保存ffmpeg的部分命令参数，负责ffmpeg进程的启动、停止'''
@@ -64,19 +65,18 @@ class Program(object):
 		self._curinput = 0  #当前inputs的列表索引
 		self.program_id = dic["program_id"]
 		self.inputs  = []
+
+		now = time.time()
 		for item in dic["input"]:
 			pinput = PgInput(item)
 			self.inputs.append(pinput)
+			if now>=pinput.begin_timestamp:
+				self._curinput += 1
 
 		self.tasks = []
 		for item in dic["task"]:
 			ptask = PgTask(item)
 			self.tasks.append(ptask)
-
-		now = time.time()
-		for item in self.inputs:
-			if now>=item.begin_timestamp:
-				self._curinput += 1
 		# print("program_id:%d curinput:%d" % (self.program_id, self._curinput))
 
 
@@ -136,7 +136,18 @@ def json2Cmdpath(strjson):
 	return None
 
 
-if __name__ == '__main__':
+grunflag = 1
+
+def CtrlCHandler(signum, frame):
+	"""键盘中断处理"""
+	global grunflag
+    grunflag = 0
+    print("ctrl-c exit")
+    time.sleep(2)
+    sys.exit(0)
+
+
+def main():
 	content = load_file_string(setting_conf)
 	cmdpath = json2Cmdpath(content)
 	if cmdpath==None:
@@ -149,12 +160,17 @@ if __name__ == '__main__':
 		print(pg)
 	print("\n")
 	
-	# count = 0
-	while 1:
+	signal.signal(signal.SIGINT, CtrlCHandler)
+
+	global grunflag
+	while grunflag==1:
 		for pg in ls:
 			pg.run(cmdpath)
 		time.sleep(1)
-		# count += 1
-		# if count>1500:
-		# 	break
 
+    print("exit")
+	sys.exit(0)
+
+
+if __name__ == '__main__':
+	main()

@@ -9,7 +9,7 @@ import time
 
 
 class  ArticleItem(object):
-	"""docstring for  ArticleItem"""
+	"""博客文章索引。包括文章title，url，发布时间，简要内容。"""
 	def __init__(self, title, herf):
 		self._title = title
 		self._herf = herf

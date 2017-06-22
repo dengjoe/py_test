@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+	<Down>
+		<Type>hls</Type>
+		<Url>http://qj.owllive.cn/live/novel-aimeijiang.m3u8</Url>
+		<TimeOut>6s</TimeOut>
+		<MaxTimeOut>30s</MaxTimeOut>
+		<TryTimes>5</TryTimes>
+	</Down>
+	<Send>
+		<Type>tcp</Type>
+		<Rate>10M/s</Rate>
+		<RecvBuffer>20M</RecvBuffer>
+		<Targets>
+			<Target ip="192.168.2.105" port="21211" bindIP="192.168.2.127"/>
+		</Targets>
+	</Send>
+</Config>

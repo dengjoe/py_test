@@ -20,6 +20,7 @@ __author__ = 'Kevin deng'
 
 import time
 import sys
+import codecs
 
 
 #时间戳timestamp(float)与字符串间的转换
@@ -46,16 +47,17 @@ def caculate_srt(foutname, time_begin, duration, number, finname=None):
 
 	if finname:
 		with open(finname, 'r') as f:
-			lines = f.readlines()
+			for line in f.readlines():
+				lines.append(line)
 			                    
-	with open(foutname, "w") as f:
+	with codecs.open(foutname, "w", "utf-8") as f:
 		for i in range(number):
 			f.write("%d\n" % (i+1))
 			tm_begin = time_begin + dtime*i
 			tm_end   = tm_begin + dtime
 			f.write("%s --> %s\n" % (timestamp2str_time(tm_begin), timestamp2str_time(tm_end)))
 			if len(lines)>i:
-				f.write(lines[i])
+				f.write(lines[i].encode('utf-8'))
 			else:
 				f.write("\n")
 

@@ -7,7 +7,7 @@ from binascii import b2a_hex
 
 ###
 ### pdf-miner requirements
-###
+### pip install pdfminer3k
 
 from pdfminer.pdfparser import PDFParser, PDFDocument, PDFPage, PDFNoOutlines
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
@@ -34,11 +34,12 @@ def with_pdf (pdf_doc, fn, pdf_pwd, *args):
             # apply the function and return the result
             result = fn(doc, *args)
 
-        # close the pdf file
-        fp.close()
     except IOError:
         # the file doesn't exist or similar problem
-        pass
+        print("IO Error!")
+    finally:
+        fp.close()
+
     return result
 
 
@@ -204,6 +205,7 @@ def get_pages (pdf_doc, pdf_pwd='', images_folder='/tmp'):
     return with_pdf(pdf_doc, _parse_pages, pdf_pwd, *tuple([images_folder]))
 
 a = open('a.txt', 'w', encoding='utf8')
-for i in get_pages('test_doc.pdf'):
+pages = get_pages("./test_doc.pdf")
+for i in pages:
     a.write(i)
 a.close()

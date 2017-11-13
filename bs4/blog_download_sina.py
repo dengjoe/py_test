@@ -104,7 +104,7 @@ def extract_content(bsobj, url):
 
 
 	# 创建新的html对象
-	strhtml = "<title></title><body><style> body{background-color:#E1E6E0} </style></body>"
+	strhtml = "<title></title><body><style> body{font-size:20px;background-color:#E1E6E0} </style></body>"
 	mainobj = BeautifulSoup(strhtml, "lxml")
 	mainobj.head.append(meta)
 	

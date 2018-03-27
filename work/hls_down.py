@@ -54,28 +54,27 @@ def download_m3u8(url, outpath=".", log=None):
 
 	if log:
 		with open(log, "w") as fp:
-			while True:
-				data = get_url_data(url)
-				if data:
-					uris = parse_m3u8(data.decode())
+			data = get_url_data(url)
+			if data:
+				uris = parse_m3u8(data.decode())
 
-				if len(uris)>0:
-					for uri in uris:
-						if uri > last_uri:
-							cl0 = time.clock()
-							data = get_url_data(urlpath+"/"+uri)
-							cl1 = time.clock()
-							speed = len(data)/(1024*1024*(cl1-cl0))
-							content = "%s len=%d time=%f(s) speed=%.03f(M bytes/s)" % (uri, len(data), cl1-cl0, speed)
-							print(content)
-							fp.write(content+"\n")
-							fp.flush()
-							last_uri = uri
+			if len(uris)>0:
+				for uri in uris:
+					if uri > last_uri:
+						cl0 = time.clock()
+						data = get_url_data(urlpath+"/"+uri)
+						cl1 = time.clock()
+						speed = len(data)/(1024*1024*(cl1-cl0))
+						content = "%s len=%d time=%f(s) speed=%.03f(M bytes/s)" % (uri, len(data), cl1-cl0, speed)
+						print(content)
+						fp.write(content+"\n")
+						fp.flush()
+						last_uri = uri
 
-							if data == None:
-								print("%s get None", uri)
-								continue
-							# write_file_data(outpath + "/" + uri, data)
+						if data == None:
+							print("%s get None", uri)
+							continue
+						write_file_data(outpath + "/" + uri, data)
 
 	return 
 

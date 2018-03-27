@@ -161,6 +161,7 @@ def df_operate():
 	df3.append(s, ignore_index=True)
 	print(df3)
 
+
 if __name__ == '__main__':
 	Series_demo1()
 

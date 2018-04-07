@@ -40,56 +40,74 @@ def plot01():
 
 def plot02():
 	input_values = [1,2,3,4,5]
-	plt.plot(input_values, squares)
 	plt_set_param("Square Numbers", "value", "Square of value")
-	plt.savefig("p01.png")
+	plt.plot(input_values, squares)
+	plt.savefig("plt01_plot02.png")
 	# plt.show()
+
+def plot03():
+	in_values = [1,2,3,4,5]
+	y1 = [12,4,6,5,9]
+	plt_set_param("折线图——平方", "value", "Square of value")
+	plt.plot(in_values, squares)
+	plt.plot(in_values, y1, color='red', linewidth=1.0, linestyle='--') # 叠加第2条折线图
+	plt.savefig("plt01_plot03.png")
+
 
 # 散点图
 def scatter01():
 	input_values = [1,2,3,4,5]
-	plt.scatter(input_values, squares, c=(0,0,0.8))
 	plt_set_param("Square Numbers", "value", "Square of value")
+	plt.scatter(input_values, squares, c=(0,0,0.8))
 	plt.show()
 
 def scatter02():
-	xvalues = list(range(1,1000))
+	xvalues = list(range(1,100))
 	yvalues = [x**2 for x in xvalues]
+	plt_set_param("散点图——平方值", "value", "Square of value")
 	plt.scatter(xvalues, yvalues, c=yvalues, cmap=plt.cm.Blues)
-	plt_set_param("平方值", "value", "Square of value")
 	# plt.show()
-	plt.savefig("p02.png", bbox_inches="tight")
+	plt.savefig("plt01_scatter02.png", bbox_inches="tight")
 
 def scatter03():
-	xvalues = list(range(1,1000))
+	xvalues = list(range(1,100))
 	yvalues = [x**2 for x in xvalues]
+	plt_set_param("散点图——平方值", "value", "Square of value")
 	plt.scatter(xvalues, yvalues, c=yvalues, cmap=plt.cm.Blues)
-	plt_set_param("平方值", "value", "Square of value")
-	plt.grid(True)
-	plt.savefig("p03.png", bbox_inches="tight")
+	plt.grid(True)	# 显示网格
+	plt.savefig("plt01_scatter03.png", bbox_inches="tight")
+
 
 # 直方图
 def bar01():
 	xvalues = list(range(1,12))
 	yvalues = [x**2 for x in xvalues]
-	plt.bar(xvalues, yvalues)
 	plt_set_param("平方值", "value", "Square of value")
+	plt.bar(xvalues, yvalues)
 	plt.grid(True)
 	plt.xticks(xvalues)  # 修改x轴的刻度
-	plt.savefig("p04.png", bbox_inches="tight")
+	plt.savefig("plt01_bar01.png", bbox_inches="tight")
+
+import numpy as np
 
 def bar02():
-	xvalues = list(range(1,6))
-	yvalues = [x**2 for x in xvalues]
-	plt.bar(xvalues, yvalues)
+	index = np.arange(5)
+	print(index)
+	xl01 = list(range(1,6))  # 只能用于计算，不能用于多数据的x轴显示
+	yl01 = [x**2 for x in xl01]
+	yl02 = [2,20,12,6,40]
 	plt_set_param("平方值", "value", "Square of value")
+	bar_width = 0.35
+	plt.bar(index, yl01, bar_width, color='b')
+	plt.bar(index+bar_width, yl02, bar_width, color='r')
 	plt.grid(True)
-	plt.xticks(xvalues, ['one','two','three','four','five'])  # 修改x轴的刻度,及显示文字
-	plt.savefig("p05.png", bbox_inches="tight")
+	plt.xticks(index+bar_width, ['one','two','three','four','five'])  # 修改x轴的刻度,及显示文字
+	plt.savefig("plt01_bar02.png", bbox_inches="tight")
 
 if __name__ == '__main__':
 	# plot01()
 	# plot02()	
+	# plot03()
 	# scatter01()		
 	# scatter02()	
 	# scatter03()	

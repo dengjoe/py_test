@@ -51,10 +51,6 @@ def parse_fnames(dir, pats, flog):
 	            	os.rename(filepath, new_path)
 
 
-            else:
-	            print(filepath + '\n')
-
-
 def  parse_dir(dir):
 	try:
 		flog = open(dir+"/finds_info.txt", 'w')

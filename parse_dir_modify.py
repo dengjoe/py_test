@@ -62,4 +62,4 @@ def  parse_dir(dir):
 
 
 if __name__=='__main__':
-    parse_dir("D:/test/_mobis")
+    parse_dir("F:/迅雷下载/English/7700mobi/7700.Mobi.All.Ebooks")

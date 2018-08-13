@@ -7,6 +7,7 @@
 """
 
 import matplotlib.pyplot as plt
+import numpy as np
 from pylab import mpl 
 
 # 设置中文显示
@@ -104,6 +105,20 @@ def bar02():
 	plt.xticks(index+bar_width, ['one','two','three','four','five'])  # 修改x轴的刻度,及显示文字
 	plt.savefig("plt01_bar02.png", bbox_inches="tight")
 
+
+def test_legend():
+	x = np.arange(1, 11)
+
+	fig = plt.figure(1)
+	ax1 = plt.subplot(2, 1, 1)
+	ax2 = plt.subplot(2, 1, 2)
+	l1 = ax1.plot(x, x*x, 'r')  # 这里关键哦
+	l2 = ax2.plot(x, x*x*x, 'b')  # 注意
+	# 其中，loc表示位置的；
+	plt.legend([l1, l2], ['first', 'second'], loc = 'upper right') 
+	plt.grid(True)
+	plt.show()
+
 if __name__ == '__main__':
 	# plot01()
 	# plot02()	
@@ -112,4 +127,5 @@ if __name__ == '__main__':
 	# scatter02()	
 	# scatter03()	
 	# bar01()	
-	bar02()
+	# bar02()
+	test_legend()

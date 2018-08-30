@@ -12,6 +12,7 @@ from pylab import mpl
 
 # 设置中文显示
 mpl.rcParams['font.sans-serif'] = ['SimHei'] 
+plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 # 黑体	SimHei
 # 微软雅黑	Microsoft YaHei
 # 微软正黑体	Microsoft JhengHei
@@ -97,27 +98,59 @@ def bar02():
 	xl01 = list(range(1,6))  # 只能用于计算，不能用于多数据的x轴显示
 	yl01 = [x**2 for x in xl01]
 	yl02 = [2,20,12,6,40]
+
 	plt_set_param("平方值", "value", "Square of value")
 	bar_width = 0.35
 	plt.bar(index, yl01, bar_width, color='b')
 	plt.bar(index+bar_width, yl02, bar_width, color='r')
+
 	plt.grid(True)
 	plt.xticks(index+bar_width, ['one','two','three','four','five'])  # 修改x轴的刻度,及显示文字
 	plt.savefig("plt01_bar02.png", bbox_inches="tight")
 
 
+# 显示图例
 def test_legend():
 	x = np.arange(1, 11)
 
-	fig = plt.figure(1)
-	ax1 = plt.subplot(2, 1, 1)
-	ax2 = plt.subplot(2, 1, 2)
-	l1 = ax1.plot(x, x*x, 'r')  # 这里关键哦
-	l2 = ax2.plot(x, x*x*x, 'b')  # 注意
-	# 其中，loc表示位置的；
-	plt.legend([l1, l2], ['first', 'second'], loc = 'upper right') 
+	l1, = plt.plot(x, x*x, 'r')  # 注意，必须要逗号，否则不显示
+	l2, = plt.plot(x, x*x*x, 'b')  
+	# loc表示位置的；
+	plt.legend([l1, l2], ['first', 'second'], loc = 'upper left') 
 	plt.grid(True)
 	plt.show()
+
+def test_multi_plot():
+	t = np.arange(0., 5., 0.2)
+
+	# red dashes, blue squares and green triangles
+	# plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
+	l1, = plt.plot(t, t, 'r--')
+	l2, = plt.plot(t, t**2, 'bs')
+	p1 = plt.legend(handles=[l1, l2], labels = ['a', 'b'], loc = 'upper left')
+
+	l3, = plt.plot( t, t**3, 'g^')
+	plt.legend(handles=[l3], labels = ['c'], loc = 'lower right')
+
+	plt.gca().add_artist(p1)  # 这里很重要，否则p1不显示
+	plt.show()
+
+def test_multi_2():
+	x = np.random.uniform(-1, 1, 4)
+	y = np.random.uniform(-1, 1, 4)
+	p1, = plt.plot([1,2,3])
+	p2, = plt.plot([3,2,1])
+	l1 = plt.legend([p2, p1], ["line 2", "line 1"], loc='upper left')
+	 
+	p3 = plt.scatter(x[0:2], y[0:2], marker = 'D', color='r')
+	p4 = plt.scatter(x[2:], y[2:], marker = 'D', color='g')
+	# This removes l1 from the axes.
+	plt.legend([p3, p4], ['label', 'label1'], loc='lower right', scatterpoints=1)
+
+	# Add l1 as a separate artist to the axes
+	plt.gca().add_artist(l1)
+	plt.show()
+
 
 if __name__ == '__main__':
 	# plot01()
@@ -128,4 +161,6 @@ if __name__ == '__main__':
 	# scatter03()	
 	# bar01()	
 	# bar02()
-	test_legend()
+	# test_legend()
+	test_multi_plot()
+	test_multi_2()

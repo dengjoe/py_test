@@ -68,18 +68,19 @@ def df_datas():
 
 	### 提取数据 ###
 	
+	# []按列提取
 	print("A:")
 	print(df['A'])
 
-	# []切片
+	# []按行提取-切片
 	print("[0:3]:")
 	print(df[0:3])
 
 	print("[\"20130102\":\"20130104\"]:")
 	print(df["20130102":"20130104"])
 
-	# loc 按标签
-	print("loc[]:")
+	# loc[] 按标签
+	print("\nloc[]:")
 	print(df.loc['20130101'])
 	print("")
 	print(df.loc[:,['A','B']]) # 多个轴
@@ -89,12 +90,12 @@ def df_datas():
 	print(df.loc["20130104",['A','B']]) # 多个轴+定值index
 
 	# at 快速访问，同loc
-	print("at[]:")
+	print("\nat[]:")
 	print(df.loc['20130101','A'])
 	# print(df.at['20130101','A']) # error？：KeyError: '20130101'
 
 	# iloc 按位置
-	print("iloc[]:")
+	print("\niloc[]:")
 	print(df.iloc[3]) # 按行
 	print("")
 	print(df.iloc[3:5, 0:2]) # 行范围(3:5]
@@ -165,6 +166,6 @@ def df_operate():
 if __name__ == '__main__':
 	Series_demo1()
 
-	# df_demo1()
-	# df_datas()
-	df_operate()
+	df_demo1()
+	df_datas()
+	# df_operate()

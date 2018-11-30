@@ -3,6 +3,10 @@
 
 import psutil
 
+##=== install pip:
+# wget https://bootstrap.pypa.io/get-pip.py
+# python get-pip.py
+##=== install psutil:
 # pip install psutil
 
 ' test psutil cpu, mem, and net. '
@@ -23,7 +27,7 @@ def test_mem():
 	print(mem)
 	print("mem total: %.2f(M)" % float(mem.total/1024/1024))
 	print("mem used: %.2f(M)" % float(mem.used/1024/1024))
-	print("mem free: %.2f(M)" % float(mem.free/1024/1024))
+	print("mem available: %.2f(M)" % float(mem.available/1024/1024))
 
 def test_disk():
 	print("");

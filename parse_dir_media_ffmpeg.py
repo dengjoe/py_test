@@ -192,6 +192,7 @@ if __name__=='__main__':
     # make_media_trans_sh("D:/data/_mold/BBC Earth Story.地球形成的故事.1998（8集）", smid, "./地球形成.sh")
     # smid = " -c:v libx264 -b:v 800k -r 25 -s 592x320 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
     # make_media_trans_sh("D:/data/_mold/BBC State of the Planet.大地的声音.2000（3集）", smid, "./大地.sh")
+
     # smid = " -map 0:0 -c:v libx264 -b:v 800k -r 24000/1001 -s 640x352 -map 0:1 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 -map 0:2 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
     # make_media_trans_sh("D:/data/_mold/BBC 蓝色星球1.2001", smid, "./蓝色星球1.sh")
     
@@ -217,6 +218,7 @@ if __name__=='__main__':
     # make_media_trans_sh("D:/data/_mold/13. 天才宝贝熊", smid, "./天才宝贝熊.sh")
     smid = " -c:v libx264 -b:v 500k -r 30000/1001 -s 512x384 -c:a libfdk_aac -ab 128k -ac 2 -ar 44100 "
     make_media_trans_sh("D:/data/_mold/07. 小爱因斯坦 Little Einsteins", smid, "./小爱因斯坦.sh")
+
 
     # smid = "  "
     # make_media_trans_sh("D:/data/_mold/", smid, "./.sh")

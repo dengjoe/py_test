@@ -12,8 +12,8 @@ from shutil import copyfile
 
 #pat = re.compile(r'([\w\s.]+?).(\d{4}).([\w]+)') #编译运行，提高效率
 
-_media_type = (".wmv",".vob",".rm",".rmvb",".avi",".mpeg",".mpg",".mp4",".mkv")
-_media_type_old = (".wmv",".vob",".rm",".rmvb",".avi",".mpeg",".mpg")
+_media_type = (".wmv",".vob",".rm",".rmvb",".avi",".mpeg",".mpg",".mp4",".mkv",".dat")
+_media_type_old = (".wmv",".vob",".rm",".rmvb",".avi",".mpeg",".mpg",".dat")
 
 def write_media_trans(dir, smid, fmedia):  
     yid = os.walk(dir)  
@@ -192,8 +192,33 @@ if __name__=='__main__':
     # make_media_trans_sh("D:/data/_mold/BBC Earth Story.地球形成的故事.1998（8集）", smid, "./地球形成.sh")
     # smid = " -c:v libx264 -b:v 800k -r 25 -s 592x320 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
     # make_media_trans_sh("D:/data/_mold/BBC State of the Planet.大地的声音.2000（3集）", smid, "./大地.sh")
-    smid = " -map 0:0 -c:v libx264 -b:v 800k -r 24000/1001 -s 640x352 -map 0:1 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 -map 0:2 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
-    make_media_trans_sh("D:/data/_mold/BBC 蓝色星球1.2001", smid, "./蓝色星球1.sh")
+
+    # smid = " -map 0:0 -c:v libx264 -b:v 800k -r 24000/1001 -s 640x352 -map 0:1 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 -map 0:2 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/BBC 蓝色星球1.2001", smid, "./蓝色星球1.sh")
+    
+    # smid = " -c:v libx264 -b:v 800k -r 25 -s 1280x720 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/01. 字母积木.Alphablocks全4季91集", smid, "./Alphablocks.sh")
+    # smid = " -c:v libx264 -b:v 800k -r 29.93 -s 720x480 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/02. Kids ABC", smid, "./Kids ABC.sh")
+    # smid = " -c:v libx264 -b:v 600k -r 25 -s 720x480 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/03. 迪斯尼美语世界", smid, "./迪斯尼美语.sh")
+    # smid = " -c:v libx264 -b:v 800k -r 30000/1001 -s 720x480 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/04. 迪斯尼Zippy and Me", smid, "./zippy.sh")
+    # smid = " -c:v libx264 -b:v 800k -r 25 -s 1280x720 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/巴迪", smid, "./巴迪.sh")
+    # smid = " -c:v libx264 -b:v 800k -r 24000/1001 -s 640x352 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/B Supervolcano.超级火山 2集", smid, "./超级火山.sh")
+    # smid = " -c:v libx264 -b:v 800k -r 30000/1001 -s 608x336 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/B 末日火山.BBC.Krakatoa.The.Last.Days", smid, "./末日火山.sh")
+    # smid = " -c:v libx264 -b:v 350k -r 30000/1001 -s 352x240 -c:a libfdk_aac -ab 128k -ac 2 -ar 44100 "
+    # make_media_trans_sh("D:/data/_mold/11. Sight word kids", smid, "./swk.sh")
+    # smid = " -c:v libx264 -b:v 700k -r 25 -s 704x576 -c:a libfdk_aac -ab 128k -ac 2 -ar 44100 "
+    # make_media_trans_sh("D:/data/_mold/09. 时代美语English_Time", smid, "./English_Time.sh")
+    # smid = " -c:v libx264 -b:v 750k -r 25 -s 640x480 -c:a libfdk_aac -ab 128k -ac 2 -ar 48000 "
+    # make_media_trans_sh("D:/data/_mold/13. 天才宝贝熊", smid, "./天才宝贝熊.sh")
+    smid = " -c:v libx264 -b:v 500k -r 30000/1001 -s 512x384 -c:a libfdk_aac -ab 128k -ac 2 -ar 44100 "
+    make_media_trans_sh("D:/data/_mold/07. 小爱因斯坦 Little Einsteins", smid, "./小爱因斯坦.sh")
+
 
     # smid = "  "
     # make_media_trans_sh("D:/data/_mold/", smid, "./.sh")
@@ -203,4 +228,10 @@ if __name__=='__main__':
     # make_media_cuts_sh("D:/data/_mold/中文版1~5季 720P", scut, "./peiqi_cuts.sh")
     # scut = "-ss 00:00:20 -t 00:05:10"
     # make_media_cuts_sh("D:/data/_mold/故宫100", scut, "./100_cuts.sh")
+    # scut = "-ss 00:00:30 -t 01:00:00"
+    # make_media_cuts_sh("D:/data/_mold/魔法觉醒", scut, "./cut魔法觉醒.sh")
+    # scut = "-ss 00:00:30 -t 01:00:00"
+    # make_media_cuts_sh("D:/data/_mold/好兆头.Good.Omens.2019", scut, "./cut好兆头.sh")
 
+    # scut = "-ss 00:00:00 -t 00:05:00"
+    # make_media_cuts_sh("D:/data/_mold/", scut, "./.sh")

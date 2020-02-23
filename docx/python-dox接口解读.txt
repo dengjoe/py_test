@@ -1,0 +1,17 @@
+
+
+class docx.styles.styles.Styles
+class docx.styles.style.BaseStyle
+
+class docx.styles.style._CharacterStyle
+Bases: docx.styles.style.BaseStyle
+
+class docx.styles.style._ParagraphStyle
+Bases: docx.styles.style._CharacterStyle
+
+class docx.styles.style._TableStyle
+Bases: docx.styles.style._ParagraphStyle
+
+
+class docx.styles.latent.LatentStyles
+class docx.styles.latent._LatentStyle
